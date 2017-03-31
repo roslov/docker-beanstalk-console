@@ -1,15 +1,15 @@
-FROM php:7.0-alpine
+FROM php:7.1-alpine
 MAINTAINER Adam Kusmierz <adam@kusmierz.be>
 
 ## Add the files
 ADD php.ini /usr/local/etc/php/conf.d/php.ini
 
 ## Add Tini
-RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ tini
-ENTRYPOINT ["/usr/bin/tini", "--"]
+RUN apk add --update --no-cache tini
+ENTRYPOINT ["/sbin/tini", "--"]
 
 ## install adminer and default theme
-ENV BEANSTALK_CONSOLE_VERSION 1.7.4
+ENV BEANSTALK_CONSOLE_VERSION 1.7.6
 
 ADD https://github.com/ptrofimov/beanstalk_console/archive/$BEANSTALK_CONSOLE_VERSION.tar.gz /tmp/$BEANSTALK_CONSOLE_VERSION.tar.gz
 RUN tar xvz -C /tmp/ -f /tmp/$BEANSTALK_CONSOLE_VERSION.tar.gz \
