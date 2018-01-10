@@ -9,7 +9,7 @@ RUN apk add --update --no-cache tini
 ENTRYPOINT ["/sbin/tini", "--"]
 
 ## install adminer and default theme
-ENV BEANSTALK_CONSOLE_VERSION 1.7.6
+ENV BEANSTALK_CONSOLE_VERSION 1.7.9
 
 ADD https://github.com/ptrofimov/beanstalk_console/archive/$BEANSTALK_CONSOLE_VERSION.tar.gz /tmp/$BEANSTALK_CONSOLE_VERSION.tar.gz
 RUN tar xvz -C /tmp/ -f /tmp/$BEANSTALK_CONSOLE_VERSION.tar.gz \
